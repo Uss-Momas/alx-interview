@@ -20,7 +20,7 @@ def handle_new_array(prev_data):
 
 def pascal_triangle(n):
     """Function that returns the list containg the lines of the triangle"""
-    if n < 0:
+    if n < 1:
         return []
     # initialize with the first element
     pascal = [[1]]
