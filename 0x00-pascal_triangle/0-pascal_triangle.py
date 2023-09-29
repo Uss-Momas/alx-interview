@@ -30,5 +30,4 @@ def pascal_triangle(n):
         prev_array = pascal[i]
         new_data = handle_new_array(prev_array)
         pascal.append(new_data)
-    
     return pascal
