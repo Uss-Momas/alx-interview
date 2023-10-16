@@ -30,6 +30,9 @@ def minOperations(n: int) -> int:
     n_operations = 0
     message = 'H'
 
+    if n < 2:
+        return 0
+
     if n < 5:
         return n
 
