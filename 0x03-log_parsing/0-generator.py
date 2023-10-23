@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+"""generator module"""
 import random
 import sys
 from time import sleep
 import datetime
 
-for i in range(5):
+
+for i in range(20):
     sleep(random.random())
     sys.stdout.write(
         "{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".
