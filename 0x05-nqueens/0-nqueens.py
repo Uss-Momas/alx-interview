@@ -59,18 +59,18 @@ def printSolution(results: List[List[str]]) -> None:
         print(positions)
 
 
-if __name__ == "__main__":
-    args = sys.argv
-    if len(args) <= 1:
-        print("Usage: nqueens N")
-        sys.exit(1)
-    n = args[1]
-    try:
-        n = int(n)
-    except ValueError:
-        print("N must be a number")
-        sys.exit(1)
-    if n < 4:
-        print("N must be at least 4")
-        sys.exit(1)
-    printSolution(solveNQueens(n))
+args = sys.argv
+if len(args) > 2 or len(args) < 2:
+    print("Usage: nqueens N")
+    exit(1)
+
+if not args[1].isdigit():
+    print("N must be a number")
+    exit(1)
+
+if int(args[1]) < 4:
+    print("N must be at least 4")
+    exit(1)
+
+n = int(args[1])
+printSolution(solveNQueens(n))
