@@ -1,56 +1,41 @@
 #!/usr/bin/python3
-"""0-stats module
-"""
-
+"""0-stats module"""
 import sys
 
 
-def print_msg(dict_sc, total_file_size):
+def print_message(size, status_dict):
+    """printing the message well formatted
     """
-    Method to print the logs
-    Args:
-        dict_sc: dict of status codes
-        total_file_size: total of the file
-    Returns:
-        Nothing
-    """
-
-    print("File size: {}".format(total_file_size))
-    for key, value in sorted(dict_sc.items()):
+    print("File size: {}".format(size))
+    for key, value in sorted(status_dict.items()):
         if value != 0:
             print("{}: {}".format(key, value))
 
 
-total_file_size = 0
-code = 0
-counter = 0
-dict_sc = {"200": 0,
-           "301": 0,
-           "400": 0,
-           "401": 0,
-           "403": 0,
-           "404": 0,
-           "405": 0,
-           "500": 0}
+count = 0
+size = 0
+statuses_dict = {
+        "200": 0, "301": 0, "400": 0, "401": 0, "403": 0, "404": 0, "405": 0,
+        "500": 0}
 
 try:
     for line in sys.stdin:
-        parsed_line = line.split()  # ✄ trimming
-        parsed_line = parsed_line[::-1]  # inverting
+        line_split = line.split()
 
-        if len(parsed_line) > 2:
-            counter += 1
+        if len(line_split) > 2:
+            count += 1
 
-            if counter <= 10:
-                total_file_size += int(parsed_line[0])  # file size
-                code = parsed_line[1]  # status code
+            if count <= 10:
+                # get the size of the current line
+                size += int(line_split[-1])
+                # get the status code of the current line
+                status = line_split[-2]
 
-                if (code in dict_sc.keys()):
-                    dict_sc[code] += 1
-
-            if (counter == 10):
-                print_msg(dict_sc, total_file_size)
-                counter = 0
+                if status in statuses_dict.keys():
+                    statuses_dict[status] += 1
+            if count == 10:
+                print_message(size, statuses_dict)
+                count = 0
 
 finally:
-    print_msg(dict_sc, total_file_size)
+    print_message(size, statuses_dict)
