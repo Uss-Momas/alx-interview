@@ -14,3 +14,7 @@ n = args[1]
 if not n.isdigit():
     print("N must be a number")
     sys.exit(1)
+
+n = int(n)
+if n < 4:
+    print("N must be at least 4")
