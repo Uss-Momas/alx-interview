@@ -9,3 +9,8 @@ args = sys.argv
 if len(args) != 2:
     print("Usage: nqueens N")
     sys.exit(1)
+
+n = args[1]
+if not n.isdigit():
+    print("N must be a number")
+    sys.exit(1)
