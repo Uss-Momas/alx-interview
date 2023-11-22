@@ -13,21 +13,17 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    coins = sorted(coins)
-    max_value = max(coins)
-    sum_values = 0
-    number_ops = 0
-    while sum_values < total:
-        sum_values += max_value
-        size = len(coins)
-        if sum_values > total:
-            if size - 1 <= 0:
-                break
-            sum_values -= max_value
-            coins.pop()
-            max_value = max(coins)
-        else:
-            number_ops += 1
-    if sum_values != total:
+    total_cp = total
+    sorted_coins = sorted(coins)
+    num_ops = []
+    while len(sorted_coins) > 0:
+        max_coin = sorted_coins[-1]
+        result = total_cp // max_coin
+        total_cp = total_cp % max_coin
+        num_ops.append(result)
+        if total_cp == 0:
+            break
+        sorted_coins.pop()
+    if total_cp != 0:
         return -1
-    return number_ops
+    return sum(num_ops)
