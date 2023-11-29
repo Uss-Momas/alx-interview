@@ -1,5 +1,5 @@
-#!//usr/bin/python3
-"""0-island_perimeter module
+#!/usr/bin/python3
+"""island_perimeter module
 """
 
 
