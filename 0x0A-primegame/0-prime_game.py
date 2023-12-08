@@ -3,22 +3,23 @@
 """
 
 
-def is_prime(num):
-    """is_prime function
+def is_prime(n):
+    """is_prime function verifies if n is a prime number
     """
-    if num <= 1:
+    if n < 2:
         return False
-    if num <= 3:
-        return True
-
-    # Check divisibility up to the square root of the number
     i = 2
-    while i * i <= num:
-        if num % i == 0:
+    while i * i <= n:
+        if n % i == 0:
             return False
         i += 1
-
     return True
+
+
+def get_index_of_multiples(n, nums):
+    """get_multiples of n in the nums list
+    """
+    return [i for i, x in enumerate(nums) if x is not None and x % n == 0]
 
 
 def isWinner(x, nums):
