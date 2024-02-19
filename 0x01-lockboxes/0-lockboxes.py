@@ -21,13 +21,15 @@ def canUnlockAll(boxes):
     # count of the number of nodes that are visited during BFS
     count = 0
     while len(queue) > 0:
-        current_node = queue.pop(0)
-        count = count + 1
-        for j in boxes[current_node]:
-            # node was not explored
-            if visited[j] is False:
-                queue.append(j)
-                visited[j] = True
+        size = len(queue)
+        for i in range(size):
+            current_node = queue.pop(0)
+            count = count + 1
+            for j in boxes[current_node]:
+                # node was not explored
+                if visited[j] is False:
+                    queue.append(j)
+                    visited[j] = True
     if count == len(boxes):
         return True
     return False
