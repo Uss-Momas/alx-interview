@@ -32,3 +32,5 @@ def pascal_triangle(n):
         pascal.append(new_data)
     return pascal
 
+
+\n
